@@ -1,0 +1,98 @@
+﻿@{
+    Layout = "";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FileBrowse</title>
+    <link href="~/bundle/style.css" rel="stylesheet" />
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            var funcNum = @(Context.Request.Query["CKEditorFuncNum"] + ";");
+            var chooseFileButton = document.getElementById('chooseFile');
+            chooseFileButton.addEventListener('click', function () {
+                var fileUrl = document.getElementsByClassName('activeFile')[0].getElementsByTagName('img')[0].src;
+                window.opener.CKEDITOR.tools.callFunction(funcNum, fileUrl);
+                window.close();
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <button class="choose-icon button-top" id="chooseFile">Choose file</button>
+            <div class="upload-btn-wrapper">
+                <button class="upload-icon button-top btn">Upload a file</button>
+                <input type="file" id="uploadFile" />
+            </div>
+            <button class="create-folder-icon button-top" id="createFolder">Add folder</button>
+            <button class="rename-folder-icon button-top" id="renameFolder">Rename folder</button>
+            <button class="delete-folder-icon button-top" id="remoteFolder">Delete folder</button>
+            <button class="copy-file-icon button-top" id="copyFile">Copy files</button>
+            <button class="move-file-icon button-top" id="moveFile">Move files</button>
+            <button class="rename-file-icon button-top" id="renameFile">Rename files</button>
+            <button class="delete-file-icon button-top" id="remoteFile">Delete files</button>
+        </div>
+        <div class="container-row">
+            <div class="left">
+                <ul class="dirlist">
+                    @foreach (var dirInfo in ViewBag.dirInfos)
+                    {
+                        <li class="folder task">
+                            <div class="folder-element">
+                                <a href="#" title="@dirInfo.FullName">
+                                    <img src="~/images/folderIcon.png" alt="" />
+                                    <label class="folder-name">@dirInfo.Name</label>
+                                </a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div class="right">
+                <ul id="fileExplorer" class="flex-container">
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalWindow" class="modal" data-id="createFolder">
+        <div class="modal_content">
+            <div class="modal-header">
+                <h1 class="modal-title">Create New Folder</h1>
+                <span class="close_modal_window">×</span>
+            </div>
+            <div class="modal-body">
+                <form action="#">
+                    <label id="info-text">Enter the name of new folder:</label>
+                    <input id="input-modal" name="newFolderName" />
+                </form>
+                <div class="directories-list">
+                    <ul class="dirlist">
+                        @foreach (var dirInfo in ViewBag.dirInfos)
+                        {
+                            <li class="folder task">
+                                <div class="folder-element activeFolder">
+                                    <a href="#" title="@dirInfo.FullName">
+                                        <img src="~/images/folderIcon.png" alt="" />
+                                        <label class="folder-name">@dirInfo.Name</label>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-modal">Cancel</button>
+                <button id="ok-modal">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/bundle/script.js"></script>
+</body>
+</html>
+
