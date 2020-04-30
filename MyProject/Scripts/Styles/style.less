@@ -1,0 +1,275 @@
+﻿@color-active-folder: #afd4d8;
+@color-border: #258ecd;
+@color-activ-file: #4ebcc7;
+@color-right-background: #ddd;
+@color-left-background: #eee;
+@color-modal-header-background: #cfcfcf;
+@path: "../images/icons-buttons/";
+@font: Arial,Helvetica,Tahoma,Verdana,sans-serif;
+    
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.container:before,
+.container:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container {
+    height: 100vh;
+    overflow: hidden;
+    zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+    display: flex;
+    flex-direction: column;
+}
+
+.container-row {
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    flex-grow: 1;
+}
+
+.top {
+    display: flex;
+    padding: 10px;
+}
+
+.left {
+    background-color: @color-left-background;
+    overflow-y: scroll;
+}
+
+.right {
+    background-color: @color-right-background;
+    overflow: auto;
+    width: 100%;
+}
+
+.left, .right {
+    min-width: 300px;
+    height: 100%;
+    border: 1px solid #fff;
+
+    ul {
+        margin: 0;
+        padding: 0px;
+        
+        li {
+            cursor:pointer;
+        }
+    }
+}
+
+.folder-element {
+    display: block;
+    border-bottom: 1px solid @color-border;
+    padding: 1em;
+
+    a {
+        text-decoration: none;
+        color: black;
+
+        img {
+            width: 20px;
+            padding-right: 6px;
+        }
+    }
+}
+
+.activeFolder {
+    background-color: @color-active-folder;
+}
+
+.flex-container {
+    padding: 0;
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+}
+
+.flex-item {
+    background: darkgray;
+    padding: 10px;
+    height: 150px;
+    color: black;
+    font-size: 12px;
+    margin: 5px;
+
+    img {
+        width: 150px;
+        height: 100px;
+    }
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+
+    input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+}
+
+.btn {
+    padding: 6px 10px;
+}
+
+.activeFile {
+    background-color: @color-activ-file;
+}
+
+#copyFile, #moveFile, #renameFile, #remoteFile, #chooseFile {
+    display: none;
+}
+
+.activPart {
+    border: 1px solid @color-border !important;
+}
+
+
+
+.directories-list {
+    height: 400px;
+    overflow-y: scroll;
+
+    ul {
+        margin: 0;
+        padding: 0px;
+
+        li {
+            cursor: pointer;
+        }
+    }
+}
+
+.choose-icon {
+    background-image: url('@{path}/choose-icon.svg');
+}
+
+.upload-icon {
+    background-image: url('@{path}/upload-icon.svg');
+}
+
+.create-folder-icon {
+    background-image: url('@{path}/add-folder-icon.svg');
+}
+
+.rename-folder-icon {
+    background-image: url('@{path}/rename-folder-icon.svg');
+}
+
+.delete-folder-icon {
+    background-image: url('@{path}/delete-folder-icon.svg');
+}
+
+.copy-file-icon {
+    background-image: url('@{path}/copy-file-icon.svg');
+}
+
+.move-file-icon {
+    background-image: url('@{path}/move-file-icon.svg');
+}
+
+.rename-file-icon {
+    background-image: url('@{path}/rename-file-icon.svg');
+}
+
+.delete-file-icon {
+    background-image: url('@{path}/delete-file-icon.svg');
+}
+
+.button-top {
+    padding-left: 2em;
+    background-position: 5px center;
+    background-repeat: no-repeat;
+}
+
+//Modal-window
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+    font-family: @font;
+
+    .modal_content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        border: 1px solid #888;
+        width: 300px;
+        z-index: 99999;
+
+        .close_modal_window {
+            color: #aaa;
+            float: right;
+            font-size: 23px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+}
+
+.modal-header {
+    padding: 5px 10px;
+    background-color: @color-modal-header-background;
+
+    h1 {
+        font-size: .9em;
+        font-weight: 400;
+        text-align: left;
+        line-height: 24px;
+        display: contents;
+    }
+}
+
+.modal-body {
+    margin: 50px 10px;
+
+    input {
+        padding: .4em;
+        line-height: 1.4em;
+        display: block;
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+.modal-footer {
+    margin: 10px;
+    text-align: right;
+
+    button {
+        font-size: 12.5px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: .625em;
+        padding: 5px 10px;
+    }
+}
+
+
