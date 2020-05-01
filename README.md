@@ -1,7 +1,7 @@
 # FileBrowse
 Hello everybody! When you use the **CKEditor** with **ASP.NET Core** you might have seen that the file manager **CKFinder** didn't work . I'd like to present my FileBrowser!
 
-![screenshot of FileBrowse](http://kirav.ru/images/articles/51/file-browser-screenshort03.jpg)
+![screenshot of FileBrowse](http://kirav.ru/images/articles/51/file-browser-screenshort04.jpg)
 
 I do like CKEditor and I didn't want to change it to another one. For my **"FileBrowser"** I have made the simplified version of the CKFinder. It's easier but its main functions are still available. 
 
